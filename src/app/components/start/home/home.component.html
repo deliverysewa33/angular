@@ -1,5 +1,14 @@
 <app-header></app-header>
-   
-   <p>Hello </p>
+<div *ngFor="let pho of item">
+    <img [src]="pho.itemsPicture" width="640" height="360" >
+    <p>{{pho.id}}</p>
+    <p>{{pho.itemsName}}</p>
+    <p>{{pho.price}}</p>
+    
+    
+    
 
-<app-footer></app-footer>
+  </div>
+   
+
+<!-- <app-footer></app-footer> -->

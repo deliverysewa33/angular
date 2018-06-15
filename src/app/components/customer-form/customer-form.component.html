@@ -1,3 +1,4 @@
+<app-header></app-header>
 <div class="container" >
   <h2>Customer Information</h2>
   <form #customerForm="ngForm" (ngSubmit)="onSubmit(customerForm)" >
@@ -47,15 +48,44 @@
             </div>
            <div class="form-group">
              <label class="label label-default">
-                 Select Gender: </label>  
-                 <label class="radio-inline"><input type="radio" name="optradio">male</label>
+                 Gender: </label>  
+                 <label class="radio-inline"><input type="radio" name="optradio" checked="checked">Male</label>
                  <label class="radio-inline"><input type="radio" name="optradio">Female</label>
              </div>
-            <div class="form-group">
+            
+             <div>
+                Address
+            <select class="form-control-inline">
+                    <option value="" disabled selected>State</option>
+                    <div *ngFor="let pho of add">
+                        <option value="">{{pho.state}}</option>
+                        </div>
+                   
+            </select>
+        
+                <select class="form-control-inline">
+                        <option value="" disabled selected>District</option>
+                        <option value=""> </option> 
+                 </select>
+        
+                <select class=" form-control-inline">
+                            <option value="" disabled selected>Local Level</option>
+                            <option value=""></option>
+                     </select>
+                
+            </div>
+            &nbsp;
+             
+            
+             <!-- <div class="form-group">
                 <label for="address">Address</label>
                 <input type="text" class="form-control" id="address"
                 [(ngModel)]="model.address" name="address">
-            </div>
+            </div> -->
+
+
+
+
             <div class="form-group">
                 <label for="uname">User Name</label>
                 <input type="text" class="form-control" id="uname" required
@@ -76,7 +106,19 @@
                   </div>
                   </div>
               </div>
+              <div class="form-group">
+                <label for="password">Confrom Password</label>
+                <input type="password" class="form-control" id="passworde" 
+                [(ngModel)]="model.password" name="password" required #passwod="ngModel">
+                <div *ngIf="!passwod?.valid && (passwod?.dirty ||passwod?.touched)" class="alert alert-danger">
+                  <div [hidden]="!passwod.errors.required">
+                Password is needed to be provided
+                  </div>
+                  </div>
+              </div>
               <button type="submit" class="btn btn-success"
               [disabled]="!customerForm.form.valid">Submit</button>
   </form>
 </div>
+&nbsp;
+<app-footer></app-footer>

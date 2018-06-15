@@ -22,10 +22,26 @@ export class SignInComponent implements OnInit {
   message: string;
   id:number;
   role:string;
+  Latitude:number;
+  Longitude:number;
   constructor(private router: Router, private userService: UserServiceService, private _authService: AuthenticateService, private cookie: CookieService) { }
 
   ngOnInit() {
+
+    $('form').submit( function()  {
+      if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+      } else { 
+        return false;
+      }
+  })
    
+  
+  function showPosition(position) {
+     this.Latitude= position.coords.latitude;
+      this.Longitude=  position.coords.longitude;
+  }
+  
 
   }
   onSubmit(form: NgForm) {
@@ -41,7 +57,7 @@ export class SignInComponent implements OnInit {
       this.cookie.set('id',data['id']);
      this.cookie.set('loginType',data['loginType']);
       this.role=this.cookie.get('loginType')
-      
+      console.log(this.Latitude);
       if(this.role=='ADMIN'){
         this.router.navigate(['/adminDashboard']);
       }else if(this.role=='CUSTOMER'){
@@ -57,7 +73,7 @@ export class SignInComponent implements OnInit {
         this._authService.setLoggedIn(false);
         if (error.error['message']) {
           this.message = error.error['message'];
-          swal(this.message, " " , "warning");
+          swal(this.message, " " , "error");
           
         }
         else {

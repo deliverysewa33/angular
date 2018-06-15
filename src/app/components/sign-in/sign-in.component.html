@@ -1,89 +1,34 @@
-<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<app-header></app-header>
+&nbsp;
 <div class="container">
-  <div class="card card-container">
-      <img id="profile-img" class="profile-img-card" src="assets/imaages/icon.png" />
-      <p id="profile-name" class="profile-name-card"></p>
-    
-  <form   class="form-signin" #signInForm="ngForm" (ngSubmit)="onSubmit(signInForm)">
-      <p style="color:red;">{{message}}</p> 
-    <div  class="col-md-6">
+  <p id="profile-name" class="profile-name-card"></p>
+  <h1>Login</h1>
+  <form class="form-signin" #signInForm="ngForm" (ngSubmit)="onSubmit(signInForm)">
+    <div class="col-md-6">
       <label for="name"> User Name</label>
-      <input type="text" class="form-control" id="uname" required
-     [(ngModel)]="model.username" name="username" #username="ngModel">
+      <input type="text" class="form-control" id="uname" required [(ngModel)]="model.username" name="username" #username="ngModel">
       <div *ngIf="!username?.valid && (username?.dirty ||username?.touched)" class="alert alert-danger">
         <div [hidden]="!username.errors.required">
-        Username is required
+          Username is required
         </div>
-        </div>
+      </div>
     </div>
     <div class="col-md-6">
       <label for="password">Password</label>
-      <input  type="password" class="form-control" id="password" 
-      [(ngModel)]="model.password" name="password" required #passwd="ngModel">
+      <input type="password" class="form-control" id="password" [(ngModel)]="model.password" name="password" required #passwd="ngModel">
       <div *ngIf="!passwd?.valid && (passwd?.dirty ||passwd?.touched)" class="alert alert-danger">
         <div [hidden]="!passwd.errors.required">
-      Password is needed to be provided
+          Password is needed to be provided
         </div>
-        </div>
+      </div>
     </div>
-<br>
- <div class="col-md-6">
-    <button type="submit" class="btn btn-success"
-    [disabled]="!signInForm.form.valid">Log In</button>
+    <br>
+    <div class="col-md-6">
+      <button type="submit" class="btn btn-success" [disabled]="!signInForm.form.valid">Log In</button>
 
-    <a routerLink="/forgetPassword" routerLinkActive="active">Forgot password?</a>
- </div>
-   
-
+      <a routerLink="/forgetPassword" routerLinkActive="active">Forgot password?</a>
+    </div>
   </form>
-  </div>
-</div> -->
-
-
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
-
-
-
-
-
-    <div class="container">
-        <div class="card card-container">
-         
-            <img id="profile-img" class="profile-img-card"  src="/assets/images/icon.png" />
-            <p id="profile-name" class="profile-name-card"></p>
-            <form   class="form-signin" #signInForm="ngForm" (ngSubmit)="onSubmit(signInForm)">
-                
-                <input type="text" class="form-control" id="uname" required placeholder="Username"
-                [(ngModel)]="model.username" name="username" #username="ngModel">
-                <div *ngIf="!username?.valid && (username?.dirty ||username?.touched)" class="alert alert-danger">
-                  <div [hidden]="!username.errors.required">
-                  Username is required
-                  </div>
-                  </div>
-
-                <input  type="password" class="form-control" id="password" placeholder="Password"
-                [(ngModel)]="model.password" name="password" required #passwd="ngModel">
-                <div *ngIf="!passwd?.valid && (passwd?.dirty ||passwd?.touched)" class="alert alert-danger">
-                  <div [hidden]="!passwd.errors.required">
-                Password is needed to be provided
-                  </div>
-                  </div>
-                <div id="remember" class="checkbox">
-                    <label>
-                        <input type="checkbox" value="remember-me"> Remember me
-                    </label>
-                </div>
-                <div class="proceed">
-                <button type="submit" class="btn btn-success"
-              [disabled]="!signInForm.form.valid">Log In</button>
-            </div>
-            </form><!-- /form -->
-            <a routerLink="/forgetPassword" routerLinkActive="active">Forgot password?</a>
-            
-        </div><!-- /card-container -->
-    </div><!-- /container -->
+</div>
+&nbsp;
+<br>

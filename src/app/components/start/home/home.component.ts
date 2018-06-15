@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {HomeService} from '../../../services/home.service';
+import { HomeService } from '../../../services/home.service';
 declare var $: any;
 import swal from 'sweetalert2';
 import { Items } from '../../../model/items';
 import { error } from 'protractor';
+import { HttpClient } from '@angular/common/http';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -11,30 +13,32 @@ import { error } from 'protractor';
 })
 export class HomeComponent implements OnInit {
 
-  data:any;
-  item: Items;
-  constructor(private _product:HomeService) { 
- this.item=new Items
+  data: any;
+  item: Items[];
+  constructor(private _product: HomeService) {
 
   }
 
   ngOnInit() {
-  
-  this._product.listProduct().subscribe(data  => {
-    console.log('item', this.data);
-   this.item =data;
-    console.log("item",this.item);
-
-  },
-
-    error => {
-      console.log('item Error', error)
-
-    }
-
-
-  );
-
+    
+    this.showAllProduct();
+    
   }
 
+  showAllProduct(){
+
+    this._product.listProduct().subscribe(data => {
+
+      console.log('Gallery', this.data);
+      this.item = data;
+      console.log('gal',this.item);
+    },
+      error => {
+        console.log('Gellery Error', error)
+      }
+
+
+    );
+
+  }
 }

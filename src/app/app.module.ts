@@ -23,7 +23,6 @@ import { CustomerComponent } from './components/admin-panel/customer/customer.co
 import { StoreComponent } from './components/admin-panel/store/store.component';
 import { AddStoreComponent } from './components/admin-panel/store/add-store/add-store.component';
 import { ListStoreComponent } from './components/admin-panel/store/list-store/list-store.component';
-import { DeleteCustomerComponent } from './components/admin-panel/customer/delete-customer/delete-customer.component';
 import { ListUserComponent } from './components/admin-panel/user/list-user/list-user.component';
 import { AdminDashboardComponent } from './components/admin-panel/admin-dashboard/admin-dashboard.component';
 import { ResetPasswordService } from './services/reset-password.service';
@@ -37,6 +36,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import {HomeComponent} from './components/start/home/home.component';
 import {  HomeService} from './services/home.service';
+import {  CreateCustomerService} from './services/create-customer.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +52,6 @@ import {  HomeService} from './services/home.service';
      StoreComponent,
      AddStoreComponent,
      ListStoreComponent,
-     DeleteCustomerComponent,
      ListUserComponent,
      AdminDashboardComponent,
      ResetPasswordComponent,
@@ -73,7 +72,7 @@ import {  HomeService} from './services/home.service';
     BrowserAnimationsModule,
     
   ],
-  providers: [AuthenticateService , CookieService , AuthGuard ,UserServiceService, ResetPasswordService,HomeService],
+  providers: [AuthenticateService , CookieService , AuthGuard ,UserServiceService, ResetPasswordService,HomeService,CreateCustomerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
