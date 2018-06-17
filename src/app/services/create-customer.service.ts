@@ -5,17 +5,18 @@ import { Config } from '../Configuration/config';
 @Injectable()
 export class CreateCustomerService {
 
+  state:string;
   constructor(private _http: HttpClient) { }
 
   listState(){
     return this._http.get<Address[]>(Config.stateUrl);
   }
 
-  listDistric(){
-    return this._http.get<Address>(Config.itemsUrl);
+  listDistrict(state){
+    return this._http.get<Address[]>(Config.itemsUrl.concat('state'));
   }
 
   listLocalLevel(){
-    return this._http.get<Address>(Config.itemsUrl);
+    return this._http.get<Address[]>(Config.itemsUrl);
   }
 }

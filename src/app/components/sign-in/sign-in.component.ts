@@ -27,21 +27,7 @@ export class SignInComponent implements OnInit {
   constructor(private router: Router, private userService: UserServiceService, private _authService: AuthenticateService, private cookie: CookieService) { }
 
   ngOnInit() {
-
-    $('form').submit( function()  {
-      if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(showPosition);
-      } else { 
-        return false;
-      }
-  })
-   
-  
-  function showPosition(position) {
-     this.Latitude= position.coords.latitude;
-      this.Longitude=  position.coords.longitude;
-  }
-  
+    this.onSubmit  
 
   }
   onSubmit(form: NgForm) {
@@ -61,7 +47,7 @@ export class SignInComponent implements OnInit {
       if(this.role=='ADMIN'){
         this.router.navigate(['/adminDashboard']);
       }else if(this.role=='CUSTOMER'){
-        this.router.navigate(['/customer']);
+        this.router.navigate(['/front']);
       }else{
         this.router.navigate(['/front']);
       }

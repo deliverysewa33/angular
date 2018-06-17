@@ -55,20 +55,19 @@
             
              <div>
                 Address
-            <select class="form-control-inline">
-                    <option value="" disabled selected>State</option>
-                    <div *ngFor="let pho of add">
-                        <option value="">{{pho.state}}</option>
-                        </div>
-                   
+            <select  class="form-control-inline" name="satate">
+                    <option selected="" value=""  disabled selected>State</option>  
+                    <option [ngValue]="k.state" *ngFor="let k of add"> {{k.state}}  </option> 
             </select>
+
+             
         
-                <select class="form-control-inline">
+                <select class="form-control-inline" name="district">
                         <option value="" disabled selected>District</option>
                         <option value=""> </option> 
                  </select>
         
-                <select class=" form-control-inline">
+                <select class=" form-control-inline" name="locallevel">
                             <option value="" disabled selected>Local Level</option>
                             <option value=""></option>
                      </select>

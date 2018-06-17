@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Delivery } from '../../model/delivery';
-import { NgForm } from '@angular/forms';
+import { NgForm,FormGroup,FormControl,Validators } from '@angular/forms';
 import { CreateCustomerService } from '../../services/create-customer.service';
 import { Address } from '../../model/address';
 @Component({
@@ -14,29 +14,37 @@ export class CustomerFormComponent implements OnInit {
   validateEmail = true;
   data: any;
   add: Address[];
-  submitted = false;
+  dist: Address[];
   state:string;
+  district:string;
+  submitted = false;
+  registerForm: FormGroup;
   constructor(private _address:CreateCustomerService) { }
 
   ngOnInit() {
-    // this.add = new Address;
+    
     this.getAllState();
+    this.getAllDistrictByState;
+
   }
 
+  
 
 
 
-  onSubmit(form: NgForm) {
-    this.submitted = true;
-    console.log(form.value)
+   
+  register(){
+
   }
+  
+
 
   getAllState() {
     this._address.listState().subscribe(data => {
-      console.log('item', this.data);
+      console.log('state', this.data);
       this.add = data;
-      console.log("item",  this.state);
-
+      console.log("state",  this.add);
+      this.getAllDistrictByState;
     },
 
       error => {
@@ -46,7 +54,21 @@ export class CustomerFormComponent implements OnInit {
     );
   }
 
-  getAllDistrictByState() {
+  getAllDistrictByState(frm:NgForm) {
+    this.state=frm.value('state');
+    console.log(this.state)
+    this._address.listDistrict(this.state).subscribe(data => {
+      console.log('district', this.data);
+      this.dist = data;
+      console.log("district",  this.dist);
+
+    },
+
+      error => {
+        console.log('item Error', error)
+      }
+
+    );
 
   }
 
