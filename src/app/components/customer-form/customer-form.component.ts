@@ -33,10 +33,14 @@ export class CustomerFormComponent implements OnInit {
 
 
    
-  register(){
-
-  }
-  
+  onSubmit(form: NgForm){
+    return this._address.createCustomer(form.value).subscribe(data =>{
+       console.log("Credentials",data);
+       console.log(data);
+       console.log(form.value);
+      //  this.router.navigate(['/front']);
+     });
+    }
 
 
   getAllState() {

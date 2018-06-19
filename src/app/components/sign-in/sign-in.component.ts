@@ -32,26 +32,27 @@ export class SignInComponent implements OnInit {
   }
   onSubmit(form: NgForm) {
     this.submitted = true;
-    // console.log(form.value);
-    console.log(form.value);
+    console.log("value",form.value);
     this.userService.signInUser(form.value).subscribe(data => {
       console.log("Credentials", data);
       console.log(data);
       this.success = true;
       this.cookie.set('authorization', data['token']);
       this._authService.setLoggedIn(true);
-      this.cookie.set('id',data['id']);
-     this.cookie.set('loginType',data['loginType']);
+      this.cookie.set('loginId',data['loginId']);
+      this.cookie.set('loginType',data['loginType']);
       this.role=this.cookie.get('loginType')
-      console.log(this.Latitude);
+
       if(this.role=='ADMIN'){
+        this.cookie.set('userId',data['userId'])
         this.router.navigate(['/adminDashboard']);
       }else if(this.role=='CUSTOMER'){
-        this.router.navigate(['/front']);
+        this.cookie.set('customerId',data['customerId'])
+        this.router.navigate(['/customer']);
       }else{
+        this.cookie.set('storeId',data['storeId'])
         this.router.navigate(['/front']);
       }
-    
 
     },
       error => {

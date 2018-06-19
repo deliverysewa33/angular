@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  private loginUrl: string = '/home';
+  private loginUrl: string = '/';
   constructor(private _authService: AuthenticateService, private router: Router) {
   }
   canActivate(
@@ -32,7 +32,7 @@ export class AuthGuard implements CanActivate {
             this._authService.setLoggedIn(false);
             console.log('error');
             // alert('error');
-            this.router.navigate(['/login']);
+            this.router.navigate(['/']);
             observer.next(false);
             observer.complete();
           });
@@ -43,5 +43,5 @@ export class AuthGuard implements CanActivate {
   }
   canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     return true;
-  }  
+  }    
 }

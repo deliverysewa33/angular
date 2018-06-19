@@ -14,10 +14,9 @@ export class AuthenticateService {
     this.setHeaders('' , '');
   }
  
-
-
   setHeaders(key, value) {
     var authToken = this.cookie.get('authorization');
+    console.log("sas",authToken);
     this.httpHeaders = new HttpHeaders();
     this.httpHeaders = this.httpHeaders.append('Content-Type', 'application/json'),
       this.httpHeaders = this.httpHeaders.append('authorization', 'Bearer ' + authToken);
@@ -29,7 +28,6 @@ export class AuthenticateService {
     };
 
   }
-
   setLoggedIn(value){
     this.checkedToken = value;
     this.isLoggedIn = value;
@@ -38,13 +36,14 @@ export class AuthenticateService {
     
     return this.isLoggedIn;
   }
-
+  
+  
+  getTokenCheck(){
+    return this.checkedToken;
+  }
   checkTokenValidation(){
     this.setHeaders('' , '');
     return this.http.get(Config.loginUrl.concat('checkToken'),this.httpOptions);
   }
   
-  getTokenCheck(){
-    return this.checkedToken;
-  }
 }

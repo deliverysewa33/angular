@@ -19,4 +19,9 @@ export class CreateCustomerService {
   listLocalLevel(){
     return this._http.get<Address[]>(Config.itemsUrl);
   }
+
+  createCustomer(value){
+    return this._http.post(Config.customerUrl.concat('createCustomer'),value);
+
+}
 }

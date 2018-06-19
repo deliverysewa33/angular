@@ -11,7 +11,7 @@ export class HomeService {
   constructor(private _http: HttpClient) { }
 
     listProduct(){
-      return this._http.get<Items[]>(Config.itemsUrl.concat('items'));
+      return this._http.get<Items[]>(Config.itemsUrl.concat('listAll'));
     }
 
 

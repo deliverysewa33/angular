@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FrontComponent } from './front.component';
+import { ChomeComponent } from './chome.component';
 
-describe('FrontComponent', () => {
-  let component: FrontComponent;
-  let fixture: ComponentFixture<FrontComponent>;
+describe('ChomeComponent', () => {
+  let component: ChomeComponent;
+  let fixture: ComponentFixture<ChomeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FrontComponent ]
+      declarations: [ ChomeComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FrontComponent);
+    fixture = TestBed.createComponent(ChomeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

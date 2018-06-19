@@ -30,13 +30,16 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
 import { CookieService } from 'ngx-cookie-service';
 import { AuthenticateService } from './services/authenticate.service';
 import { AuthGuard } from './auth.guard';
-import { FrontComponent } from './components/front/front.component';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import {HomeComponent} from './components/start/home/home.component';
 import {  HomeService} from './services/home.service';
 import {  CreateCustomerService} from './services/create-customer.service';
+import { ChomeComponent } from './components/customer/chome/chome.component';
+import { CheaderComponent } from './components/customer/cheader/cheader.component';
+import { OrderService } from './services/order.service';
+import { CartComponent } from './components/customer/cart/cart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,10 +58,12 @@ import {  CreateCustomerService} from './services/create-customer.service';
      ListUserComponent,
      AdminDashboardComponent,
      ResetPasswordComponent,
-     FrontComponent,
      HeaderComponent,
      FooterComponent,
      HomeComponent,
+     ChomeComponent,
+     CheaderComponent,
+     CartComponent
 
   ],
   imports: [
@@ -72,7 +77,8 @@ import {  CreateCustomerService} from './services/create-customer.service';
     BrowserAnimationsModule,
     
   ],
-  providers: [AuthenticateService , CookieService , AuthGuard ,UserServiceService, ResetPasswordService,HomeService,CreateCustomerService],
+  providers: [AuthenticateService , CookieService , AuthGuard ,UserServiceService, ResetPasswordService,
+    HomeService,CreateCustomerService,OrderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

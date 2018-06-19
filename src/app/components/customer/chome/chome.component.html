@@ -1,0 +1,29 @@
+<app-cheader></app-cheader>
+&nbsp;
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+&nbsp;
+<div class="container">
+<div class="row">
+    <form #orderForm="ngForm" (ngSubmit)="onSubmit(orderForm)" *ngFor="let pho of item">
+    <div class="col-md-3" >
+        <div class="ibox" >
+            <div class="ibox-content product-box">
+                <div class="product-imitation">
+                        <img src="data:image/png;base64,{{pho.itemsPicture}}" width="230px" height="100">
+                </div>
+                <div class="product-desc">
+                    {{pho.itemsName}}
+                  <input type="text"  name="orderName" [(ngModel)]="pho.itemsName" [(ngModel)]="model.orderName" #itemsName="ngModel" hidden>
+                  <input type="text"  name="imageUrl" [(ngModel)]="pho.itemsPicture" [(ngModel)]="model.imageUrl" #imageUrl="ngModel" hidden>
+                    <div class="m-t text-righ">
+                        <button type="submit" class="btn btn-xs btn-outline btn-primary">Order</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+    </div>
+</div>
+      
+

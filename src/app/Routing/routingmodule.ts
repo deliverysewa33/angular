@@ -11,9 +11,10 @@ import { AdminPanelComponent } from '../components/admin-panel/admin-panel.compo
 import { AddNewUser } from '../model/addnewUser';
 import { AdminDashboardComponent } from '../components/admin-panel/admin-dashboard/admin-dashboard.component';
 import { ResetPasswordComponent } from '../components/reset-password/reset-password.component';
-import { FrontComponent } from '../components/front/front.component';
 import { HomeComponent } from '../components/start/home/home.component';
 import { AuthGuard } from '../auth.guard';
+import { ChomeComponent } from '../components/customer/chome/chome.component';
+import { CartComponent } from '../components/customer/cart/cart.component';
 
 const routes: Routes = [
   {
@@ -44,26 +45,20 @@ const routes: Routes = [
     component:AdminDashboardComponent,
     canActivate:[AuthGuard]
   },
+  {
+    path:'customer',
+    component:ChomeComponent,
+    canActivate:[AuthGuard]
+  },
 
   {
     path:'reset/:token',
     component:ResetPasswordComponent
   },
   {
-    path:'front',
-    component:FrontComponent,
-    canActivate:[AuthGuard]
-  }
-  // {
-  //   path:'app-add-new-user',
-  //   component:AddNewUserComponent
-  // },
-  // {
-  //   path:'app-user',
-  //   component:UserComponent
-  // }
- 
-
+    path:'cart',
+    component:CartComponent,
+  },
 ];
 
 @NgModule({
